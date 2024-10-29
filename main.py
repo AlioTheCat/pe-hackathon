@@ -34,9 +34,11 @@ def solve_puzzle(grid, shapes):
     mat_list = piece_matx_list(pos)
     vect_list_flat = np.array(piece_flattened_list(N,pos,grid))
     print(vect_list_flat)
-    solution = next(covers_bool(vect_list_flat))
+    try:
+        solution = next(covers_bool(vect_list_flat))
+    except StopIteration:
+        return "NO SOLUTIONS WERE FOUND"
     M = convert_solution_to_matx(solution, vect_list_flat, mat_list, N, h,w)
-    # print(M)
     plt.matshow(M, cmap='magma')
     plt.show()
 
