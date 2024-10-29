@@ -28,6 +28,25 @@ def test():
     shapes = [np.array([[1] ])]
     all_sym = generate_all_symmetries(shapes)
     [[print(y) for y in x] for x in generate_translations(grid, all_sym).items()]
+    
+    grid = np.array([
+        [1, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 1],
+    ])
+
+    pieces = {
+        1: [np.array([
+            [1, 1],
+            [1, 0],
+        ])],
+        2: [np.array([[1, 1, 1]])]
+    }
+    results = generate_translations(grid, pieces)
+    print(results)
+    
 
 if __name__ == "__main__":
     test()
