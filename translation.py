@@ -8,7 +8,7 @@ def translate_shape(grid, piece):
     for i in range(grid_rows - piece_rows + 1):
         for j in range(grid_cols - piece_cols + 1):
             window = grid[i:i + piece_rows, j:j + piece_cols]
-            if not np.any(window[piece]):  
+            if not np.any(window[piece == 1]):  
                 new_grid = np.zeros(grid.shape)
                 new_grid[i:i + piece_rows, j:j + piece_cols] += piece
                 translations.append(new_grid)
@@ -23,8 +23,30 @@ def generate_translations(grid, sym_pieces):
 
     return valid_positions
 
-grid = np.array([[1,0,0], [0,0,0], [0,0,0]])
-shapes = [np.array([[1, 1], [0, 1]])]
-all_sym = generate_all_symmetries(shapes)
-print(all_sym)
-[print(x) for x in translate_shape(grid, shapes[0])]
+def test():
+    grid = np.array([[1,1,0], [0,0,0], [0,0,0]])
+    shapes = [np.array([[1] ])]
+    all_sym = generate_all_symmetries(shapes)
+    [[print(y) for y in x] for x in generate_translations(grid, all_sym).items()]
+    
+    grid = np.array([
+        [1, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 1],
+    ])
+
+    pieces = {
+        1: [np.array([
+            [1, 1],
+            [1, 0],
+        ])],
+        2: [np.array([[1, 1, 1]])]
+    }
+    results = generate_translations(grid, pieces)
+    print(results)
+    
+
+if __name__ == "__main__":
+    test()
