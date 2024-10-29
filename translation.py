@@ -19,7 +19,7 @@ def generate_translations(grid, sym_pieces):
     for piece_num, symmetries in sym_pieces.items():
         valid_positions[piece_num] = []
         for piece in symmetries:
-            valid_positions[piece_num].append(translate_shape(grid, piece))
+            valid_positions[piece_num].extend(translate_shape(grid, piece))
 
     return valid_positions
 
