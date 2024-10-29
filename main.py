@@ -42,7 +42,7 @@ def solve_puzzle(grid, shapes):
         return 
     M = convert_solution_to_matx(solution, vect_list_flat, mat_list, N, h,w)
     M += 1.4*N*grid
-    plt.matshow(M, cmap='Pastel1')
+    plt.matshow(M, cmap='terrain')
     plt.show()
 
 
