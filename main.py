@@ -22,7 +22,8 @@ RAW_SHAPES = {
 }
 
 
-grid= np.zeros((5,12))
+grid= np.zeros((7,7))
+grid[3:5,3:5] += 1
 shapes=list(map(np.array, RAW_SHAPES.values()))
 
 
@@ -37,7 +38,7 @@ def solve_puzzle(grid, shapes):
     solution = next(covers_bool(vect_list_flat))
     M = convert_solution_to_matx(solution, vect_list_flat, mat_list, N, h,w)
     # print(M)
-    plt.matshow(M, cmap='magma')
+    plt.matshow(M, cmap='magma_r')
     plt.show()
 
 
