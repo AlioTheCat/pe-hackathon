@@ -22,7 +22,7 @@ RAW_SHAPES = {
 }
 
 
-grid= np.zeros((7,7))
+grid= np.zeros((8,8))
 grid[3:5,3:5] += 1
 shapes=list(map(np.array, RAW_SHAPES.values()))
 
@@ -34,13 +34,15 @@ def solve_puzzle(grid, shapes):
     pos = generate_translations(grid,symetries)
     mat_list = piece_matx_list(pos)
     vect_list_flat = np.array(piece_flattened_list(N,pos,grid))
-    print(vect_list_flat)
+
     try:
         solution = next(covers_bool(vect_list_flat))
     except StopIteration:
-        return "NO SOLUTIONS WERE FOUND"
+        print("NO SOLUTIONS WERE FOUND")
+        return 
     M = convert_solution_to_matx(solution, vect_list_flat, mat_list, N, h,w)
-    plt.matshow(M, cmap='magma_r')
+    M += 1.4*N*grid
+    plt.matshow(M, cmap='Pastel1')
     plt.show()
 
 
