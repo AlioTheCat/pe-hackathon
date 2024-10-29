@@ -15,9 +15,7 @@ pieces = {
         [1, 1],
         [1, 0]
     ])],
-    2: [np.array([
-        [1, 1, 1]
-    ])]
+    2: [np.array([[1, 1, 1]])]
 }
 results = generate_translations(grid, pieces)
 print(results)
