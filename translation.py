@@ -22,9 +22,10 @@ def generate_translations(grid, sym_pieces):
             valid_positions[piece_num].append(translate_shape(grid, piece))
 
     return valid_positions
-
+"""
 grid = np.array([[1,0,0], [0,0,0], [0,0,0]])
 shapes = [np.array([[1, 1], [0, 1]])]
 all_sym = generate_all_symmetries(shapes)
 print(all_sym)
 [print(x) for x in translate_shape(grid, shapes[0])]
+"""
