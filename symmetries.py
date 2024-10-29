@@ -31,5 +31,5 @@ def test1():
             print(f"Transformation {j + 1}:\n{transformation}\n")
         print("##################################\n\n")
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     test1()
