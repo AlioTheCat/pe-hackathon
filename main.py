@@ -22,7 +22,8 @@ RAW_SHAPES = {
 }
 
 
-grid= np.zeros((5,5))
+grid= np.zeros((5,5), dtype=int)
+grid[0,1]=1
 shapes=np.array([RAW_SHAPES["F"],RAW_SHAPES["Z"]])
 
 
@@ -31,9 +32,10 @@ def solve_puzzle(grid, shapes):
     N=len(shapes)
     symetries=generate_all_symmetries(shapes)
     pos=generate_translations(grid,symetries)
+    print(pos)
     mat_list=piece_matx_list(pos)
     vect_list_flat=piece_flattened_list(N,pos,grid)
-    solution=next(covers_bool(vect_list_flat))
+    solution=next(xcover.covers_bool(vect_list_flat))
     M=convert_solution_to_matx(solution, vect_list_flat, mat_list, N, h,w)
     plt.matshow(M, cmap='magma')
     plt.show()
