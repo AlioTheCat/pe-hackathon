@@ -22,7 +22,7 @@ The goal is the following : given a grid with some obstacles (place where petomi
 
 ## Our solution
 
-We give ourselves `g` a $h \times w$ binary grid where 1 are the obstacles in the grid, and a set of pieces in their representation.
+We give ourselves `g` a $h \times w$ binary grid where occurences of `1` are the obstacles in the grid, and a set of pieces in their representation.
 
 First, we calculate each legal possible position of every piece. We represent these positions by a binary matrix, where 1 represents slots that are occupied by the piece, and each 0 is an empty slot.
 
